@@ -16,8 +16,16 @@ class Agent(AbstractAgent):
         :return: The payment that your agent contributes.
         """
 
-        #TODO: Implement Exercise 1 a) here!
-        return 0.0
+        # If alpha < 1, then contributing isn't worthwhile.
+        if alpha < 1.0:
+            return 0.0
+
+        p = 0.5
+        q = -0.5
+
+        payout = (p * alpha + q) * budget
+
+        return payout
 
     def get_payment_basic_subgroups(self, alpha: float, budget: float, subgroup_size: int,
                                     total_player_count: int) -> float:

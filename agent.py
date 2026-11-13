@@ -5,6 +5,8 @@ Code for Exercise 2. Fill in the marked TODOs in the methods and submit this fil
 from abstract_agent import AbstractAgent
 #TODO: You may add imports here. Apart from standard library packages, you may use pandas, scipy and numpy.
 
+from strategies import *
+
 class Agent(AbstractAgent):
 
     def get_payment_basic(self, alpha: float, budget:float) -> float:
@@ -16,16 +18,8 @@ class Agent(AbstractAgent):
         :return: The payment that your agent contributes.
         """
 
-        # If alpha < 1, then contributing isn't worthwhile.
-        if alpha < 1.0:
-            return 0.0
-
-        p = 0.5
-        q = -0.5
-
-        payout = (p * alpha + q) * budget
-
-        return payout
+        return get_payment_basic_exponential(alpha, budget)
+        # return get_payment_basic_linear(alpha, budget)
 
     def get_payment_basic_subgroups(self, alpha: float, budget: float, subgroup_size: int,
                                     total_player_count: int) -> float:
